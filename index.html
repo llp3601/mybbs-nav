@@ -20,7 +20,6 @@
         .card { background: var(--card); border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
         .card h3 { margin: 0 0 8px 0; color: #f56; }
-        .tag { font-size: 12px; background: #ffebee; color: #f56; padding: 2px 8px; border-radius: 20px; }
     </style>
 </head>
 <body>
@@ -34,10 +33,10 @@
         <div class="section">
             <h2>🤖 AI 与 前沿科技</h2>
             <div class="cards">
-                <a href="https://chat.openai.com" class="card" target="_blank"><h3>ChatGPT</h3><p>AI对话</p></a>
-                <a href="https://www.midjourney.com" class="card" target="_blank"><h3>Midjourney</h3><p>AI绘画</p></a>
-                <a href="https://github.com" class="card" target="_blank"><h3>GitHub</h3><p>代码托管</p></a>
-                <a href="https://www.deepseek.com" class="card" target="_blank"><h3>DeepSeek</h3><p>大模型</p></a>
+                <a href="https://chat.openai.com" class="card" target="_blank"><h3>ChatGPT</h3></a>
+                <a href="https://www.midjourney.com" class="card" target="_blank"><h3>Midjourney</h3></a>
+                <a href="https://github.com" class="card" target="_blank"><h3>GitHub</h3></a>
+                <a href="https://www.deepseek.com" class="card" target="_blank"><h3>DeepSeek</h3></a>
             </div>
         </div>
 
@@ -49,31 +48,30 @@
                 <a href="https://www.bilibili.com" class="card" target="_blank"><h3>Bilibili</h3></a>
                 <a href="https://www.douyin.com" class="card" target="_blank"><h3>抖音</h3></a>
                 <a href="https://store.steampowered.com" class="card" target="_blank"><h3>Steam</h3></a>
+                <a href="https://jiandantv.com" class="card" target="_blank"><h3>简单TV</h3></a>
             </div>
         </div>
 
-        <!-- 实用工具 & 敏感内容 -->
+        <!-- 实用工具 & 敏感后台 -->
         <div class="section">
-            <h2>🛠️ 实用工具 & 管理后台</h2>
+            <h2>🛠️ 实用工具 & 管理</h2>
             <div class="cards">
                 <a href="https://www.remove.bg" class="card" target="_blank"><h3>Remove.bg</h3></a>
                 <a href="https://tinypng.com" class="card" target="_blank"><h3>TinyPNG</h3></a>
                 <a href="https://www.canva.com" class="card" target="_blank"><h3>Canva</h3></a>
                 <a href="https://www.notion.so" class="card" target="_blank"><h3>Notion</h3></a>
+                <a href="https://www.aliyundrive.com" class="card" target="_blank"><h3>阿里云盘</h3></a>
             </div>
         </div>
     </div>
 
-    <!-- 密码保护脚本 -->
+    <!-- 密码保护 -->
     <script>
         const PASSWORD = "123456"; // ← 改成你的强密码！
 
-        const protectedKeywords = [
-            "porn","missav","ero","gal","nekogal","touchgal","milkyway","melvor",
-            "云之翼","xfltd","光速云","UFI","ZTE","Name.com","阿里云盘","vivo"
-        ];
+        const protectedKeywords = ["porn","missav","ero","gal","nekogal","touchgal","milkyway","melvor","云之翼","xfltd","UFI","ZTE","阿里云盘"];
 
-        document.addEventListener("click", function(e) {
+        document.addEventListener("click", e => {
             if (e.target.tagName === "A") {
                 const href = e.target.href.toLowerCase();
                 if (protectedKeywords.some(k => href.includes(k))) {
