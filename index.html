@@ -9,7 +9,7 @@
         @media (prefers-color-scheme: dark) {
             :root { --bg: #1a1a1a; --text: #ddd; --card: #2a2a2a; }
         }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; line-height: 1.6; }
+        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
         .container { max-width: 1200px; margin: 0 auto; }
         h1 { text-align: center; margin-bottom: 10px; }
         .subtitle { text-align: center; color: #666; margin-bottom: 30px; }
@@ -20,8 +20,6 @@
         .card { background: var(--card); border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
         .card h3 { margin: 0 0 8px 0; color: #f56; }
-        .card p { margin: 0 0 12px 0; font-size: 14px; color: #777; }
-        .tag { display: inline-block; background: #ffebee; color: #f56; font-size: 12px; padding: 2px 8px; border-radius: 20px; margin-top: 8px; }
     </style>
 </head>
 <body>
@@ -29,100 +27,41 @@
         <h1>MyBBS 导航</h1>
         <p class="subtitle">收录全网优质资源，做你数字生活的领航员</p>
         
-        <input type="text" class="search" id="searchInput" placeholder="搜索站点或关键词..." onkeyup="searchCards()">
+        <input type="text" class="search" id="searchInput" placeholder="搜索书签..." onkeyup="searchCards()">
 
-        <!-- AI 与 前沿科技 -->
+        <!-- 你的书签区域（请自行添加） -->
         <div class="section">
-            <h2>🤖 AI 与 前沿科技</h2>
+            <h2>AI & 工具</h2>
             <div class="cards">
-                <a href="https://chat.openai.com" class="card" target="_blank">
-                    <h3>ChatGPT</h3>
-                    <p>OpenAI 推出的最强人工智能聊天机器人，改变工作方式。</p>
-                    <span class="tag">AI对话 生产力</span>
-                </a>
-                <a href="https://www.midjourney.com" class="card" target="_blank">
-                    <h3>Midjourney</h3>
-                    <p>AI 绘画领域的佼佼者，通过文字生成精美图像。</p>
-                    <span class="tag">AI绘画 设计</span>
-                </a>
-                <a href="https://github.com" class="card" target="_blank">
-                    <h3>GitHub</h3>
-                    <p>全球最大的代码托管平台，程序员的必备武器。</p>
-                    <span class="tag">开发</span>
-                </a>
-                <a href="https://www.deepseek.com" class="card" target="_blank">
-                    <h3>DeepSeek</h3>
-                    <p>国内开源免费AI工具，比肩GPT-4o。</p>
-                    <span class="tag">大模型</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- 影音与娱乐 -->
-        <div class="section">
-            <h2>🎬 影音与娱乐</h2>
-            <div class="cards">
-                <a href="https://www.netflix.com" class="card" target="_blank">
-                    <h3>Netflix</h3>
-                    <p>全球最大的流媒体播放平台，海量原创剧集。</p>
-                </a>
-                <a href="https://www.spotify.com" class="card" target="_blank">
-                    <h3>Spotify</h3>
-                    <p>全球流行的音乐流媒体服务，发现新音乐。</p>
-                </a>
-                <a href="https://www.bilibili.com" class="card" target="_blank">
-                    <h3>Bilibili</h3>
-                    <p>年轻人的文化社区，涵盖视频、直播、游戏。</p>
-                </a>
-                <a href="https://store.steampowered.com" class="card" target="_blank">
-                    <h3>Steam</h3>
-                    <p>全球最大的综合性数字发行平台之一。</p>
-                </a>
-            </div>
-        </div>
-
-        <!-- 实用工具箱 -->
-        <div class="section">
-            <h2>🛠️ 实用工具箱</h2>
-            <div class="cards">
-                <a href="https://www.remove.bg" class="card" target="_blank">
-                    <h3>Remove.bg</h3>
-                    <p>一键自动抠图，AI 智能去除图片背景。</p>
-                </a>
-                <a href="https://tinypng.com" class="card" target="_blank">
-                    <h3>TinyPNG</h3>
-                    <p>智能压缩 PNG 和 JPEG 图片，保持画质。</p>
-                </a>
-                <a href="https://www.canva.com" class="card" target="_blank">
-                    <h3>Canva</h3>
-                    <p>在线平面设计工具，零基础也能做海报。</p>
-                </a>
-                <a href="https://www.notion.so" class="card" target="_blank">
-                    <h3>Notion</h3>
-                    <p>All-in-One 的笔记与协作工具。</p>
-                </a>
-            </div>
-        </div>
-
-        <!-- 新增分类示例（你可以继续扩展） -->
-        <div class="section">
-            <h2>🌐 常用服务 & 效率工具</h2>
-            <div class="cards">
-                <a href="https://mail.google.com" class="card" target="_blank"><h3>Gmail</h3></a>
-                <a href="https://drive.google.com" class="card" target="_blank"><h3>Google Drive</h3></a>
-                <a href="https://www.notion.so" class="card" target="_blank"><h3>Notion</h3></a>
-                <a href="https://translate.google.com" class="card" target="_blank"><h3>Google 翻译</h3></a>
-                <a href="https://www.flightradar24.com" class="card" target="_blank"><h3>Flightradar24</h3></a>
+                <a href="https://chat.openai.com" class="card" target="_blank"><h3>ChatGPT</h3></a>
+                <!-- 添加你的其他书签 -->
             </div>
         </div>
     </div>
 
+    <!-- 密码保护 -->
     <script>
+        const PASSWORD = "123456"; // ← 改成你的强密码！
+
+        const protectedKeywords = ["porn","missav","ero","gal","nekogal","touchgal","milkyway","melvor","云之翼","xfltd","UFI","ZTE","阿里云盘"];
+
+        document.addEventListener("click", e => {
+            if (e.target.tagName === "A") {
+                const href = e.target.href.toLowerCase();
+                if (protectedKeywords.some(k => href.includes(k))) {
+                    const input = prompt("🔒 需要密码才能访问\n请输入密码：");
+                    if (input !== PASSWORD) {
+                        alert("❌ 密码错误！");
+                        e.preventDefault();
+                    }
+                }
+            }
+        });
+
         function searchCards() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            document.querySelectorAll('.card').forEach(card => {
-                const text = card.textContent.toLowerCase();
-                card.style.display = text.includes(input) ? 'block' : 'none';
+            const val = document.getElementById('searchInput').value.toLowerCase();
+            document.querySelectorAll('.card').forEach(c => {
+                c.style.display = c.textContent.toLowerCase().includes(val) ? '' : 'none';
             });
         }
     </script>
