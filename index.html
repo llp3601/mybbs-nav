@@ -3,68 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyBBS 导航 - 探索数字新世界</title>
+    <title>MyBBS 导航 - 收录全网优质资源</title>
     <style>
-        :root { --bg: #f8f9fa; --text: #333; --card: white; }
-        @media (prefers-color-scheme: dark) {
-            :root { --bg: #1a1a1a; --text: #ddd; --card: #2a2a2a; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
         }
-        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        h1 { text-align: center; margin-bottom: 10px; }
-        .subtitle { text-align: center; color: #666; margin-bottom: 30px; }
-        .search { width: 100%; max-width: 600px; margin: 20px auto; padding: 12px 20px; font-size: 18px; border: 2px solid #ddd; border-radius: 50px; display: block; }
-        .section { margin-bottom: 40px; }
-        .section h2 { border-bottom: 3px solid #f56; padding-bottom: 10px; }
-        .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: var(--card); border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
-        .card h3 { margin: 0 0 8px 0; color: #f56; }
+        body {
+            background-color: #f5f7fa;
+            padding: 20px max(20px, calc((100% - 1200px) / 2));
+        }
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        /* 搜索框样式 */
+        .search-box {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            display: flex;
+        }
+        #searchInput {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px 0 0 8px;
+            outline: none;
+            font-size: 16px;
+        }
+        #searchInput:focus {
+            border-color: #3b82f6;
+        }
+        .search-btn {
+            padding: 0 20px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+        }
+        .search-btn:hover {
+            background: #2563eb;
+        }
+        .category-wrap {
+            margin-bottom: 36px;
+        }
+        .category-title {
+            font-size: 20px;
+            color: #1f2937;
+            padding: 10px 0 14px;
+            border-bottom: 2px solid #3b82f6;
+            margin-bottom: 16px;
+        }
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+        }
+        .link-item a {
+            display: block;
+            padding: 10px 14px;
+            background: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: 0.2s all;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .link-item a:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+        }
+        /* 私密目录默认完全隐藏，无任何提示 */
+        .private-wrap {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>MyBBS 导航</h1>
-        <p class="subtitle">收录全网优质资源，做你数字生活的领航员</p>
-        
-        <input type="text" class="search" id="searchInput" placeholder="搜索书签..." onkeyup="searchCards()">
+    <h1>MyBBS 导航｜收录全网优质资源，做你数字生活的领航员</h1>
 
-        <!-- AI 与 前沿科技 -->
-        <div class="section">
-            <h2>🤖 AI 与 前沿科技</h2>
-            <div class="cards">
-                <a href="https://chat.openai.com" class="card" target="_blank"><h3>ChatGPT</h3></a>
-                <a href="https://www.midjourney.com" class="card" target="_blank"><h3>Midjourney</h3></a>
-                <a href="https://github.com" class="card" target="_blank"><h3>GitHub</h3></a>
-                <a href="https://www.deepseek.com" class="card" target="_blank"><h3>DeepSeek</h3></a>
-            </div>
+    <!-- 全局搜索框（核心：输入口令解锁私密区） -->
+    <div class="search-box">
+        <input id="searchInput" placeholder="搜索网站 / 输入私密口令回车解锁隐藏资源">
+        <button class="search-btn">搜索</button>
+    </div>
+
+    <!-- 1. AI & 前沿科技 -->
+    <div class="category-wrap">
+        <h2 class="category-title">🤖 AI 与 前沿科技</h2>
+        <div class="link-grid">
+            <div class="link-item"><a href="https://chat.openai.com">ChatGPT</a></div>
+            <div class="link-item"><a href="https://www.midjourney.com">Midjourney</a></div>
+            <div class="link-item"><a href="https://github.com">GitHub</a></div>
+            <div class="link-item"><a href="https://deepseek.com">DeepSeek</a></div>
+            <div class="link-item"><a href="https://tinywow.com">TinyWow AI工具</a></div>
+            <div class="link-item"><a href="https://grok.com">Grok</a></div>
         </div>
+    </div>
 
-        <!-- 影音娱乐 -->
-        <div class="section">
-            <h2>🎬 影音与娱乐</h2>
-            <div class="cards">
-                <a href="https://www.netflix.com" class="card" target="_blank"><h3>Netflix</h3></a>
-                <a href="https://www.bilibili.com" class="card" target="_blank"><h3>Bilibili</h3></a>
-                <a href="https://www.douyin.com" class="card" target="_blank"><h3>抖音</h3></a>
-                <a href="https://store.steampowered.com" class="card" target="_blank"><h3>Steam</h3></a>
-                <a href="https://jiandantv.com" class="card" target="_blank"><h3>简单TV</h3></a>
-            </div>
+    <!-- 2. 搜索引擎 & 综合工具 -->
+    <div class="category-wrap">
+        <h2 class="category-title">🔍 搜索引擎 & 综合工具</h2>
+        <div class="link-grid">
+            <div class="link-item"><a href="https://www.google.com.hk">Google</a></div>
+            <div class="link-item"><a href="https://yandex.com/">Yandex</a></div>
+            <div class="link-item"><a href="https://chongbuluo.com/">虫部落搜索</a></div>
+            <div class="link-item"><a href="https://www.runoob.com/">菜鸟教程</a></div>
+            <div class="link-item"><a href="http://ping.chinaz.com/">百度测速</a></div>
         </div>
+    </div>
 
-        <!-- 实用工具 & 敏感后台 -->
-        <div class="section">
-            <h2>🛠️ 实用工具 & 管理</h2>
-            <div class="cards">
-                <a href="https://www.remove.bg" class="card" target="_blank"><h3>Remove.bg</h3></a>
-                <a href="https://tinypng.com" class="card" target="_blank"><h3>TinyPNG</h3></a>
-                <a href="https://www.canva.com" class="card" target="_blank"><h3>Canva</h3></a>
-                <a href="https://www.notion.so" class="card" target="_blank"><h3>Notion</h3></a>
-                <a href="https://www.aliyundrive.com" class="card" target="_blank"><h3>阿里云盘</h3></a>
+    <!-- 3. 影音视频 -->
+    <div class="category-wrap">
+        <h2 class="category-title">🎬 影音与娱乐</h2>
+        <div class="link-grid">
+            <div class="link-item"><a href="https://youtube.com/">YouTube</a></div>
+            <div class="link-item"><a href="https://www.bilibili.com/">哔哩哔哩</a></div>
+            <div class="link-item"><a href="https://bilibili.iiilab.com/">B站视频解析</a></div>
+            <div class="link-item"><a href="https://www.douyin.com/recommend">抖音</a></div>
+            <div class="link-item"><a href="https://jiandantv.com/">简单TV</a></div>
+            <div class="link-item"><a href="https://kanjua.com/">影视网</a></div>
+            <div class="link-item"><a href="https://cupfox.com/">茶杯狐</a></div>
+            <div class="link-item"><a href="https://sitapix.com/">西田图像</a></div>
+            <div class="link-item"><a href="https://pv.vlogdownloader.com/">视频解析</a></div>
+            <div class="link-item"><a href="https://fmhy.net/">FMHY资源站</a></div>
+        </div>
+    </div>
+
+    <!-- 4. 游戏平台 & 游戏资源 -->
+    <div class="category-wrap">
+        <h2 class="category-title">🎮 游戏平台 & 游戏资源</h2>
+        <div class="link-grid">
+            <div class="link-item"><a href="https://store.steampowered.com/">Steam</a></div>
+            <div class="link-item"><a href="https://steamdb.info/">SteamDB</a></div>
+            <div class="link-item"><a href="https://steampy.com/">SteamPY交易</a></div>
+            <div class="link-item"><a href="https://www.epicgames.com/store/zh-CN">Epic商店</a></div>
+            <div class="link-item"><a href="https://epicbundle.com/">EpicBundle</a></div>
+            <div class="link-item"><a href="https://www.humblebundle.com/">HumbleBundle</a></div>
+            <div class="link-item"><a href="https://gog.com/">GOG</a></div>
+            <div class="link-item"><a href="https://www.3dmgame.com/">3DM游戏网</a></div>
+            <div class="link-item"><a href="https://igg-games.com/">IGG游戏</a></div>
+            <div class="link-item"><a href="https://byrut.org/">Byrut游戏</a></div>
+            <div class="link-item"><a href="https://www.fanatical.com/">Fanatical</a></div>
+            <div class="link-item"><a href="https://crazygames.com/">在线小游戏</a></div>
+            <div class="link-item"><a href="https://dos.zczc.cz/">DOS在线游戏</a></div>
+            <div class="link-item"><a href="https://touchgal.io/">TouchGal</a></div>
+        </div>
+    </div>
+
+    <!-- 5. 开发/代码/站长工具 -->
+    <div class="category-wrap">
+        <h2 class="category-title">💻 开发 & 站长工具</h2>
+        <div class="link-grid">
+            <div class="link-item"><a href="https://www.matools.com/">码工具</a></div>
+            <div class="link-item"><a href="https://tool.chinaz.com/">站长工具</a></div>
+            <div class="link-item"><a href="https://tool.lu/">程序员工具箱</a></div>
+            <div class="link-item"><a href="https://getquicker.net/">Quicker效率工具</a></div>
+            <div class="link-item"><a href="https://www.cnblogs.com/markleaf/p/7808817.html">VIM快捷键教程</a></div>
+            <div class="link-item"><a href="https://antenna-theory.com/">天线理论网站</a></div>
+            <div class="link-item"><a href="https://delicate-steam-512.notion.site/">HFSS</a></div>
+        </div>
+    </div>
+
+    <!-- 6. 网盘 & 办公 -->
+    <div class="category-wrap">
+        <h2 class="category-title">☁️ 网盘 & 办公工具</h2>
+        <div class="link-grid">
+            <div class="link-item"><a href="https://drive.google.com/">Google云端硬盘</a></div>
+            <div class="link-item"><a href="https://pc.vivo.com/suite#/note/">vivo办公套件</a></div>
+            <div class="link-item"><a href="https://accounts.google.com/b/0/AddMailService">Gmail</a></div>
+            <div class="link-item"><a href="https://mail.163.com/">网易邮箱</a></div>
+        </div>
+    </div>
+
+    <!-- 7. 网络 & 运维工具 -->
+    <div class="category-wrap">
+        <h2 class="category-title">🌐 网络 & 运维工具</h2>
+        <div class="link-grid">
+            <div class="link-item"><a href="https://speedtest.cn/">测速网</a></div>
+            <div class="link-item"><a href="https://fast.com/">Fast测速</a></div>
+            <div class="link-item"><a href="http://192.168.0.1:2333/">内网管理</a></div>
+            <div class="link-item"><a href="https://dash.cloudflare.com/">Cloudflare</a></div>
+            <div class="link-item"><a href="https://name.com/account">域名管理</a></div>
+            <div class="link-item"><a href="https://temp-mail.org/zh">临时邮箱</a></div>
+        </div>
+    </div>
+
+    <!-- 8. 电子书资源 -->
+    <div class="category-wrap">
+        <h2 class="category-title">📚 电子书资源</h2>
+        <div class="link-grid">
+            <div class="link-item"><a href="https://tboxn.com/560.html">Zlibrary</a></div>
+            <div class="link-item"><a href="https://zhuanlan.zhihu.com/p/628884862">书源大汇总</a></div>
+        </div>
+    </div>
+
+    <!-- 9. 导航合集 -->
+    <div class="category-wrap">
+        <h2 class="category-title">📌 导航站点合集</h2>
+        <div class="link-grid">
+            <div class="link-item"><a href="https://tboxn.com/">Tbox导航</a></div>
+            <div class="link-item"><a href="https://oom.cool/">高老四导航</a></div>
+            <div class="link-item"><a href="https://xiaoce.fun/">猜盐</a></div>
+        </div>
+    </div>
+
+
+    <!-- ========== 私密隐藏目录（页面初始完全隐藏，无任何标识）========== -->
+    <div class="private-wrap" id="privateBox">
+        <div class="category-wrap">
+            <h2 class="category-title">🔒 私密资源目录</h2>
+            <div class="link-grid">
+                <!-- 所有私密书签放这里 -->
+                <div class="link-item"><a href="https://github/search?q=v2ray">GitHub v2ray搜索</a></div>
+                <div class="link-item"><a href="https://5sim.com/zh/payment">5SIM</a></div>
+                <div class="link-item"><a href="https://llp1025.eu.org/admin">edgetunnel后台</a></div>
+                <div class="link-item"><a href="https://38.47.123.185:1400/">云服务器面板</a></div>
+                <div class="link-item"><a href="https://popopot.com/starmaker-story-game-guide">游戏攻略站</a></div>
             </div>
         </div>
     </div>
 
-   
+
+<script>
+// ==================== 配置区（修改这里）====================
+const SECRET_KEY = "mypass666"; // 你自定义的解锁口令
+const STORAGE_KEY = "private_unlock_status";
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.querySelector(".search-btn");
+const privateBox = document.getElementById("privateBox");
+
+// 页面加载：读取解锁状态，已解锁直接显示私密区
+window.onload = () => {
+    if(localStorage.getItem(STORAGE_KEY) === "true"){
+        privateBox.style.display = "block";
+    }
+}
+
+// 搜索按钮点击事件
+function handleSearch(){
+    const keyword = searchInput.value.trim();
+    if(!keyword) return;
+
+    // 判断是否输入解锁口令
+    if(keyword === SECRET_KEY){
+        privateBox.style.display = "block";
+        localStorage.setItem(STORAGE_KEY, "true");
+        alert("私密资源已解锁，刷新页面无需重复输入口令");
+        searchInput.value = "";
+        return;
+    }
+
+    // 普通关键词：页面搜索逻辑（基础模糊搜索公开链接）
+    alert("普通搜索功能可自行扩展，当前仅口令解锁生效");
+}
+
+// 回车触发搜索
+searchInput.addEventListener("keydown", (e)=>{
+    if(e.key === "Enter") handleSearch();
+})
+searchBtn.addEventListener("click", handleSearch);
+</script>
 </body>
 </html>
